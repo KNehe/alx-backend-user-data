@@ -63,7 +63,7 @@ def forbidden(error) -> str:
     """
     Error handler for 403 status code
     """
-    return jsonify({"error": "Forbidden"})
+    return jsonify({"error": "Forbidden"}), 403
 
 
 if __name__ == "__main__":
