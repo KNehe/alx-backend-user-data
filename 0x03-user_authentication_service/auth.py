@@ -3,6 +3,7 @@
 Module auth
 """
 from bcrypt import hashpw, gensalt, checkpw
+from uuid import uuid4
 
 from db import DB
 from user import User
@@ -17,6 +18,15 @@ def _hash_password(password: str) -> bytes:
     hashed_password = hashpw(password.encode('utf-8'), gensalt())
 
     return hashed_password
+
+
+def _generate_uuid() -> str:
+    """
+    Returns string representation
+    of a new UUID
+    """
+    uid = str(uuid4())
+    return uid
 
 
 class Auth:
