@@ -4,6 +4,7 @@ Module auth
 """
 from bcrypt import hashpw, gensalt, checkpw
 from uuid import uuid4
+from typing import Union
 
 from db import DB
 from user import User
