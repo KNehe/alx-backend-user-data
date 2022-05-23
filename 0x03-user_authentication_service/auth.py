@@ -62,7 +62,7 @@ class Auth:
 
     def create_session(self, email: str) -> str:
         """
-        Creates a session from a 
+        Creates a session from a
         user and stores session id in
         database
         """
