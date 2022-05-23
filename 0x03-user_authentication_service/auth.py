@@ -81,12 +81,12 @@ class Auth:
         """
         finds a user using the session id
         """
-        if user_id is None:
+        if session_id is None:
             return None
 
         try:
-            user = self._db.find_user_by(id=user_id)
-            self._db.update_user(user.id, session_id=None)
+            user = self._db.find_user_by(session_id=session_id)
+            return user
         except NoResultFound:
             return None
 
