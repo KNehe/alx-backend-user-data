@@ -96,19 +96,19 @@ def get_reset_password_token() -> str:
 
     token = AUTH.get_reset_password_token(email)
 
-    return jsonfiy({"email": email, "reset_token": token})
+    return jsonify({"email": email, "reset_token": token})
 
 
 @app.route('/reset_password', methods=['PUT'], strict_slashes=False)
 def update_password() -> str:
     """Updates a user password"""
     email = request.form.get('email')
-    token = request.form.get('reset_token')
-    password = request.form.get('new_password')
+    reset_token = request.form.get('reset_token')
+    new_password = request.form.get('new_password')
 
     try:
         AUTH.update_password(reset_token, new_password)
-    except Exception:
+    except Exception as e:
         abort(403)
 
     return jsonify({"email": email, "message": "Password updated"}), 200
